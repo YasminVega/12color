@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   
+    <script type="text/javascript" src="farbtastic.js"></script>
+    <link rel="stylesheet" href="farbtastic.css" type="text/css" />
+    <style>
+ 
+      #color{
+        margin: 100px auto 0 auto;
+      }
+      #whiteBar{
+        background-color: rgb(255, 255, 255);
+        border: black solid 1px;
+      }
+
+      #scale{
+        width: 500px;
+        height: 100px;
+        display: flex;
+        margin: 100px auto 0 auto;
+    
+      }
+      .scaleBtn{
+        width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  display: block;
+  background-color: rgb(255, 255, 255);
+  border: solid 1px #666;
+  border-radius: 5px;
+  border-bottom: 4px solid #666;
+  color: rgb(59, 59, 59);
+  margin: 0 auto;
+        
+      }
+    </style>
+    </head>
+    
+  <body>
+    <audio id="audio1" preload="auto"><source src="12音ピアノ/c4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio2" preload="auto"><source src="12音ピアノ/cis4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio3" preload="auto"><source src="12音ピアノ/d4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio4" preload="auto"><source src="12音ピアノ/dis4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio5" preload="auto"><source src="12音ピアノ/e4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio6" preload="auto"><source src="12音ピアノ/f4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio7" preload="auto"><source src="12音ピアノ/fis4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio8" preload="auto"><source src="12音ピアノ/g4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio9" preload="auto"><source src="12音ピアノ/gis4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio10" preload="auto"><source src="12音ピアノ/a4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio11" preload="auto"><source src="12音ピアノ/ais4の音.mp3" type="audio/mp3"></audio>
+    <audio id="audio12" preload="auto"><source src="12音ピアノ/h4の音.mp3" type="audio/mp3"></audio>
+
+    <div id="color">
+      <div id ="whiteBar"></div>
+    </div>
+
+    
+    <div id="scale">
+     <div class="scaleBtn" id="scale1"></div>
+     <div class="scaleBtn" id="scale2"></div>
+     <div class="scaleBtn" id="scale3"></div>
+     <div class="scaleBtn" id="scale4"></div>
+     <div class="scaleBtn" id="scale5"></div>
+     <div class="scaleBtn" id="scale6"></div>
+     <div class="scaleBtn" id="scale7"></div>
+     <div class="scaleBtn" id="scale8"></div>
+     <div class="scaleBtn" id="scale9"></div>
+     <div class="scaleBtn" id="scale10"></div>
+     <div class="scaleBtn" id="scale11"></div>
+     <div class="scaleBtn" id="scale12"></div>
+
+    
+      
+
+  </div>
+
+    
+    <script>
+    var MAX = 1000;  //色の種類の刻み具合
+    var cbHeight = 50;//カラーバーの高さ
+    var cbWidth = 1000;//カラーバーの幅
+    var whiteBarHeight = 20;
+    var colorbar = document.getElementById('color');
+    var whiteBar = document.getElementById('whiteBar');
+    var clickedColor;
+    colorbar.style.width = cbWidth +"px";
+    colorbar.style.height = cbHeight + "px";
+    colorbar.style.position = "relative";
+
+    whiteBar.style.width = cbWidth - 2 +"px";
+    whiteBar.style.height = whiteBarHeight + "px";
+    whiteBar.style.position ="absolute";
+    whiteBar.style.top =cbHeight + "px";
+    
+    var clicked;
+
+for (var i = 0; i < MAX; i++) {
+  // HSLカラーを算出
+   var hue = i * (360 / MAX);
+   var color = "hsl(" + hue + ", 100%, 50%)";
+   var between = cbWidth/MAX;
+   var x =  i*between;
+   var y = 0;
+
+    // シェイプを作成
+    var cDiv = "div" + i; 
+    var div = document.createElement("div");
+    div.id = cDiv;
+    div.style.width = between +"px";
+    div.style.height = cbHeight + "px";
+    //div.style.borderRadius = "50%";
+    div.style.backgroundColor = color;
+    div.style.position = "absolute";
+    div.style.left = x + "px";
+    div.style.top = y + "px";
+    colorbar.appendChild(div);
+    
+};
+
+colorbar.onclick = function(event){
+  clicked = event.target;
+  clickedColor = clicked.style.backgroundColor;
+  console.log(clickedColor);
+  
+  document.getElementById(clickedS).style.backgroundColor = clickedColor;
+}
+
+var scale=document.getElementById('scale');
+var sID;
+var sound=document.getElementById(sID);
+
+var clickedS;
+
+
+scale.onclick = function(event){
+  clickedS = event.target.id;
+  sID = clickedS.replace('scale',"audio");
+  console.log(sID);
+  status += 1;
+  document.getElementById(sID).play();
+  if(document.getElementById(sID).play){
+    console.log("再生チュウ");
+    document.getElementById(sID).pause();
+    document.getElementById(sID).currentTime =0;
+    document.getElementById(sID).play();
+  }
+  /*
+  sID.addEventListner('play',function(){
+    s
+     
+  },
+  sound.play());
+  sound.play();
+*/
+
+
+  
+  
+}
+      
+//target.addEventListener('click',)
+</script>
+  </body>
+
+</html>
