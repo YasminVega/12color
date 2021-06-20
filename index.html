@@ -132,7 +132,6 @@ colorbar.onclick = function(event){
 
 var scale=document.getElementById('scale');
 var sID;
-var sound=document.getElementById(sID);
 
 var clickedS;
 
@@ -140,7 +139,6 @@ var clickedS;
 scale.onclick = function(event){
   clickedS = event.target.id;
   sID = clickedS.replace('scale',"audio");
-  console.log(sID);
   status += 1;
   document.getElementById(sID).play();
   if(document.getElementById(sID).play){
