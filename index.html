@@ -13,7 +13,6 @@
         margin: 100px auto 0 auto;
       }
       #whiteBar{
-        background-color: rgb(255, 255, 255);
         border: black solid 1px;
       }
 
@@ -73,15 +72,12 @@
      <div class="scaleBtn" id="scale11"></div>
      <div class="scaleBtn" id="scale1"></div>
      <div class="scaleBtn" id="scale7"></div>
-
-    
       
-
   </div>
 
     
     <script>
-    var version = 11;
+    var version = 12;
       console.log("version"+version);
     var MAX = 1000;  //色の種類の刻み具合
     var cbHeight = 50;//カラーバーの高さ
@@ -123,6 +119,8 @@ for (var i = 0; i < MAX; i++) {
     colorbar.appendChild(div);
     
 };
+      
+whiteBar.style.backgroundColor = "#FFFFFF";
 
 colorbar.onclick = function(event){
   clicked = event.target;
