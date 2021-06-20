@@ -81,7 +81,7 @@
 
     
     <script>
-    var version = 7;
+    var version = 8;
       console.log("version"+version);
     var MAX = 1000;  //色の種類の刻み具合
     var cbHeight = 50;//カラーバーの高さ
@@ -143,14 +143,13 @@ scale.onclick = function(event){
   sID = clickedS.replace('scale',"audio");
   status += 1;
   document.getElementById(sID).play();
-  /*if(document.getElementById(sID).play){
+  if(document.getElementById(sID).play){
     console.log("再生チュウ");
-    document.getElementById(sID).pause();
+    document.getElementById(sID).load();
     document.getElementById(sID).currentTime =0;
     document.getElementById(sID).play();
  
   }
- */ 
 }
 
 </script>
